@@ -4,15 +4,19 @@ import com.myfolder.myfolder.domain.entities.FolderEntity;
 import com.myfolder.myfolder.domain.entities.UserEntity;
 import com.myfolder.myfolder.domain.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Entity(name = "db_user")
+@Entity
 @Data
 @Builder
 @Table(name = "db_user")
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserTable {
     @Id()
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -24,7 +28,7 @@ public class UserTable {
     @Enumerated(EnumType.STRING)
     UserRole role;
     @OneToMany(fetch = FetchType.LAZY)
-    List<FolderEntity> folders;
+    List<FolderTable> folders;
 
     public UserEntity toEntity() {
         return new UserEntity(id, name, email, password, role);

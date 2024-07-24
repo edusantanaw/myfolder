@@ -19,6 +19,10 @@ public class JwtService {
     @Value("${JWT_SECRET}")
     private String secret;
 
+    JwtService() {
+        System.out.println(secret);
+    }
+
     public String generate(UserDetails userDetails) {
         return generate(new HashMap<>(), userDetails);
     }

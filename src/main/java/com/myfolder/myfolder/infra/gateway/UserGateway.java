@@ -26,11 +26,11 @@ public class UserGateway {
 
     public Optional<UserEntity> findByEmail(String email) {
         Optional<UserTable> user = repository.findByEmail(email);
-        return Optional.ofNullable(user.get().toEntity());
+        return user.map(UserTable::toEntity);
     }
 
     public Optional<User> findUserDetailsByEmail(String email) {
         Optional<UserTable> user = repository.findByEmail(email);
-        return Optional.ofNullable(user.get().toUserDetails());
+        return user.map(UserTable::toUserDetails).or(() -> Optional.of(null));
     }
 }

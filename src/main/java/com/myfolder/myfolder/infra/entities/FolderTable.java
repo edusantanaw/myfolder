@@ -1,16 +1,20 @@
 package com.myfolder.myfolder.infra.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 import java.util.UUID;
 
-@Entity(name = "db_folder")
+@Entity
 @Data
 @Builder
 @Table(name = "db_folder")
+@NoArgsConstructor
+@AllArgsConstructor
 public class FolderTable {
     @Id()
     @GeneratedValue(strategy = GenerationType.UUID)
