@@ -19,6 +19,7 @@ public class UserGateway {
                 .name(data.name())
                 .email(data.email())
                 .password(data.password())
+                .role(data.role())
                 .build();
         UserTable created = repository.save(user);
         return created.toEntity();

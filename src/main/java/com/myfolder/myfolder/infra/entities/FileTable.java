@@ -1,5 +1,6 @@
 package com.myfolder.myfolder.infra.entities;
 
+import com.myfolder.myfolder.domain.entities.FileEntity;
 import com.myfolder.myfolder.domain.entities.FolderEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -27,4 +28,9 @@ public class FileTable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="folderId")
     FolderTable folder;
+    String path;
+
+    public FileEntity toEntity(){
+        return new FileEntity(id, filename,fileLength, type, isSafe,deleted, folder.id, path );
+    }
 }

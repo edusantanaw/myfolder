@@ -18,4 +18,9 @@ public class ExceptionHandlerFilter {
     public ResponseEntity<String> domainExceptionFilter(DomainValidationException exception) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
     }
+
+    @ExceptionHandler
+    public ResponseEntity<String> domainExceptionFilter(Exception exception) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+    }
 }
