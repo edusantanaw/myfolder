@@ -29,4 +29,6 @@ public class UserTable {
     public UserEntity toEntity() {
         return new UserEntity(id, name, email, password, role);
     }
+
+    public User toUserDetails() {return new User(id, name, email, password, role);}
 }
