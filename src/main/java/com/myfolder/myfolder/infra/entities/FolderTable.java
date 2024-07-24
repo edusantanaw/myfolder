@@ -1,5 +1,6 @@
 package com.myfolder.myfolder.infra.entities;
 
+import com.myfolder.myfolder.domain.entities.FolderEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,4 +26,8 @@ public class FolderTable {
     UserTable user;
     @OneToMany(fetch = FetchType.LAZY)
     List<FileTable> files;
+
+    public FolderEntity toEntity() {
+        return new FolderEntity(id, name, user.id);
+    }
 }
