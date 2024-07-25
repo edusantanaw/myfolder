@@ -1,5 +1,6 @@
 package com.myfolder.myfolder.controllers;
 
+import com.myfolder.myfolder.controllers.dto.FolderDto;
 import com.myfolder.myfolder.domain.entities.FolderEntity;
 import com.myfolder.myfolder.services.folder.CreateFolderService;
 import lombok.AllArgsConstructor;
@@ -17,8 +18,8 @@ public class FolderController {
     private final CreateFolderService createFolderService;
 
     @PostMapping()
-    public ResponseEntity<FolderEntity> create(@RequestBody String name, @RequestBody Long user) {
-        FolderEntity folder = createFolderService.create(name, user);
+    public ResponseEntity<FolderEntity> create(@RequestBody FolderDto data) {
+        FolderEntity folder = createFolderService.create(data.name(), data.user());
         return ResponseEntity.status(HttpStatus.CREATED).body(folder);
     }
 }

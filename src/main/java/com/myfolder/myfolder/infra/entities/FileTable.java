@@ -21,7 +21,7 @@ public class FileTable {
     @GeneratedValue(strategy = GenerationType.UUID)
     UUID id;
     String filename;
-    Double fileLength;
+    Long fileLength;
     String type;
     Boolean isSafe;
     Boolean deleted;

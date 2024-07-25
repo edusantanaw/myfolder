@@ -5,9 +5,12 @@ import com.myfolder.myfolder.infra.entities.FileTable;
 import com.myfolder.myfolder.infra.entities.FolderTable;
 import com.myfolder.myfolder.infra.repositories.IFileRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+import java.util.List;
+import java.util.UUID;
+
+@Repository
 @AllArgsConstructor
 public class FileGateway {
     private final IFileRepository fileRepository;
@@ -24,5 +27,10 @@ public class FileGateway {
                 .build();
         FileTable created = fileRepository.save(fileTable);
         return  created.toEntity();
+    }
+
+    public List<FileEntity> loadByFolder(UUID folder) {
+        List<FileTable> files = fileRepository.findByFolderId(folder);
+        return files.stream().map(FileTable::toEntity).toList();
     }
 }

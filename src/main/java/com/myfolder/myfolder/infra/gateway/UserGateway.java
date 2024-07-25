@@ -5,11 +5,11 @@ import com.myfolder.myfolder.infra.entities.User;
 import com.myfolder.myfolder.infra.entities.UserTable;
 import com.myfolder.myfolder.infra.repositories.IUserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Service
+@Repository
 @AllArgsConstructor()
 public class UserGateway {
     private final IUserRepository repository;
