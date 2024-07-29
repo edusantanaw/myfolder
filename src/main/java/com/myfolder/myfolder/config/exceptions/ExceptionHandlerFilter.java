@@ -21,6 +21,6 @@ public class ExceptionHandlerFilter {
 
     @ExceptionHandler
     public ResponseEntity<String> domainExceptionFilter(Exception exception) {
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(exception.getMessage());
     }
 }
