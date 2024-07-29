@@ -32,6 +32,6 @@ public class UserGateway {
 
     public Optional<User> findUserDetailsByEmail(String email) {
         Optional<UserTable> user = repository.findByEmail(email);
-        return user.map(UserTable::toUserDetails).or(() -> Optional.of(null));
+        return user.map(UserTable::toUserDetails);
     }
 }

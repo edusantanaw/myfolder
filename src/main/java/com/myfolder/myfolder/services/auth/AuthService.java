@@ -19,10 +19,10 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public String auth(String email, String password) throws NotFoundException {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         Optional<User> userDetails = userGateway.findUserDetailsByEmail(email);
         if (userDetails.isEmpty()) throw new NotFoundException("Usuario não encontrado!");
         User user = userDetails.get();
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, password));
         return jwtService.generate(user);
     }
 }
